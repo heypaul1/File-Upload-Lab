@@ -12,7 +12,7 @@ jobs:
       - name: Build Docker image
         run: |
           cd DVFU
-          php -S localhost:8000 index.php
+          php -S localhost:8000 index.php&
 
       - name: Expose tunnel
         uses: codetalkio/expose-tunnel@v1.5.0
