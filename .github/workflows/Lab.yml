@@ -25,4 +25,4 @@ jobs:
         run: echo "Tunnel has been started at '${{ steps.expose-tunnel.outputs.tunnel-url }}'"
 
       - name: Keep tunnel alive for a defined time
-        run: timeout 7200
+        run: sleep 7200
