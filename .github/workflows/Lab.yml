@@ -12,10 +12,17 @@ jobs:
     - name: Build Docker image
       run: |
          cd DVFU
-         php -S localhost:8000 index.php &
-         npm install -g localtunnel
-         sleep 10
+         php -S localhost:8000 index.php 
      
-    - name: Open localtunnel
-      run: |
-        lt --port 8000
+    - name: Open tunnel
+    - uses: codetalkio/expose-tunnel@v1.5.0
+      id: expose-tunnel
+      with:
+        service: bore.pub
+        port: 8000
+
+    - name: Accessing the tunnel url
+      run: echo "Tunnel has been started at '${{ steps.expose-tunnel.outputs.tunnel-url }}'"
+
+    - name: Keep tunnel alive for a defined time
+      run: timeout 30m sleep 7200 
