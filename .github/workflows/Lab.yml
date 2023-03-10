@@ -11,18 +11,14 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd DVFU
-          php -S localhost:8000 index.php&
-
-      - name: Expose tunnel
-        uses: codetalkio/expose-tunnel@v1.5.0
-        id: expose-tunnel
-        with:
-          service: bore.pub
-          port: 8000
+          git clone https://github.com/PushpenderIndia/FileUploadWeb
+          cd FileUploadWeb
+          sudo cp -r challenges /var/www/html
+          sudo chmod 777 /var/www/html/challenges/uploads
+          sudo service apache2 start&
+          npm install -g localtunnel
+          lt --port 80
 
       - name: Accessing the tunnel url
-        run: echo "Tunnel has been started at '${{ steps.expose-tunnel.outputs.tunnel-url }}'"
+        run: sleep 5
 
-      - name: Keep tunnel alive for a defined time
-        run: sleep 7200
