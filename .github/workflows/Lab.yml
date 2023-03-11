@@ -11,12 +11,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          git clone https://github.com/PushpenderIndia/FileUploadWeb
-          cd FileUploadWeb
-          sudo cp -r 2_content-type /var/www/html
-          sudo chmod 777 /var/www/html
-          sudo chmod 777 /var/www/html/2_content-type
-          sudo chmod 777 /var/www/html/2_content-type/uploads
+          cd Lab
+          sudo cp -r upload.php /var/www/html/
+          sudo cp -r uploads /var/www/html/
+          sudo chmod -R 777 /var/www/html/uploads
           sudo service apache2 start&
           npm install -g localtunnel
           sleep 10
