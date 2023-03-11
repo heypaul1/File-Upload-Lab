@@ -19,7 +19,7 @@ jobs:
           sudo chmod 777 /var/www/html/2_content-type/uploads
           sudo service apache2 start&
           npm install -g localtunnel
-          lt --port 80
+          lt --port 80 -sub mylabfr
 
       - name: Accessing the tunnel url
         run: sleep 5
