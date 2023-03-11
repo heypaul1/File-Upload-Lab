@@ -13,8 +13,10 @@ jobs:
         run: |
           git clone https://github.com/PushpenderIndia/FileUploadWeb
           cd FileUploadWeb
-          sudo cp -r challenges /var/www/html
-          sudo chmod 777 /var/www/html/challenges/uploads
+          sudo cp -r 2_content-type /var/www/html
+          sudo chmod 777 /var/www/html
+          sudo chmod 777 /var/www/html/2_content-type
+          sudo chmod 777 /var/www/html/2_content-type/uploads
           sudo service apache2 start&
           npm install -g localtunnel
           lt --port 80
